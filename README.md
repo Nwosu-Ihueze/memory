@@ -20,40 +20,103 @@ The system is exposed via a REST API built with FastAPI.
 
 - **Caching**: A simple, in-memory LRU cache (`caching.py`) is used to improve performance for frequently accessed data, such as query results and entity lookups.
 
+
+
 ## Getting Started
 
 ### Prerequisites
 
-- Python 3.12+
+- **Recommended:** `uv` (automatically manages Python versions)
+- **Alternative:** Python 3.9+ (if installing via standard `pip`)
+
+---
 
 ### Installation
 
-1.  Clone the repository.
-2.  It is recommended to use a virtual environment:
-    ```sh
-    python -m venv .venv
-    source .venv/bin/activate
-    ```
-3.  Install the dependencies using `uv`:
-    ```sh
-    pip install uv
-    uv pip install -r requirements.txt 
-    ```
-    *(If you don't have a `requirements.txt`, you can install from `pyproject.toml`)*
-    ```sh
-    uv pip install -e .
-    ```
+### Method 1 (UV):
+We recommend using `uv` for a fast and reliable setup.
 
+#### Install `uv`
 
-### Running the API Server
+Choose one of the following methods if you do not have `uv` installed already.
 
-To start the API server, run:
+**macOS / Linux (curl):**
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+````
 
-```sh
+**Homebrew:**
+
+```bash
+brew install uv
+```
+
+**PyPI:**
+
+```bash
+pip install uv
+```
+
+#### Sync Dependencies
+
+Run the sync command to create the virtual environment and install all required dependencies. This will automatically install the correct Python version (likely Python 3.12) as defined in the `pyproject.toml`.
+
+```bash
+uv sync
+```
+
+---
+
+#### Running the API Server
+
+To start the API server using `uv`:
+
+```bash
+uv run uvicorn api_server:app --reload
+```
+
+### Method 2 (Pip):
+
+If you prefer not to use `uv`, you can install dependencies directly from `pyproject.toml` using `pip`.
+
+#### Create a Virtual Environment
+```bash
+python3 -m venv .venv
+```
+
+#### Activate the Virtual Environment
+- macOS/Linux
+```bash
+source .venv/bin/activate
+```
+- Windows:
+```bash
+venv/Scripts/activate
+```
+
+#### Install Dependencies
+
+Ensure your `pip` is up to date, then install dependencies from `pyproject.toml`.
+
+```bash
+pip install --upgrade pip
+pip install .
+```
+
+### Run the API Server
+
+```bash
 uvicorn api_server:app --reload
 ```
 
-The API will be available at `http://127.0.0.1:8000`. You can access the interactive API documentation (Swagger UI) at `http://127.0.0.1:8000/docs`.
+---
+The API will be available at:
+
+* [http://127.0.0.1:8000](http://127.0.0.1:8000)
+
+Interactive API documentation (Swagger UI) is available at:
+
+* [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
 
 ## API Endpoints
 
