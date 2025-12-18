@@ -43,7 +43,7 @@ Choose one of the following methods if you do not have `uv` installed already.
 **macOS / Linux (curl):**
 ```bash
 curl -LsSf https://astral.sh/uv/install.sh | sh
-````
+```
 
 **Homebrew:**
 
@@ -81,7 +81,7 @@ If you prefer not to use `uv`, you can install dependencies directly from `pypro
 
 #### Create a Virtual Environment
 ```bash
-python3 -m venv .venv
+python -m venv .venv
 ```
 
 #### Activate the Virtual Environment
@@ -91,7 +91,7 @@ source .venv/bin/activate
 ```
 - Windows:
 ```bash
-venv/Scripts/activate
+.venv/Scripts/activate
 ```
 
 #### Install Dependencies
